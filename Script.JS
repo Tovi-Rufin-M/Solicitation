@@ -41,11 +41,19 @@ const DEFAULT_DONORS = [
         amount: 370,
         comment: "I earned this by applying the american resume",
         date: "9/26 4:30 PM"
+    },
+    {
+        id: "d-3",
+        name: "Anonymous Supporter",
+        affiliation: "Grate Grate Dancer",
+        amount: 370,
+        comment: "secreto talang ni ha hahaha",
+        date: "9/28 10:35 PM"
     }
 ];
 
 // --------------------------------------------------------------------------
-// 2. STATE MANAGEMENT
+// 2. STATE MANAGEMENT secreto talang ni ha hahaha
 // --------------------------------------------------------------------------
 let donors = [];
 
