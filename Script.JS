@@ -46,7 +46,7 @@ const DEFAULT_DONORS = [
         id: "d-3",
         name: "Anonymous Supporter",
         affiliation: "Grate Grate Dancer",
-        amount: 370,
+        amount: 200,
         comment: "secreto talang ni ha hahaha",
         date: "9/28 10:35 PM"
     }
