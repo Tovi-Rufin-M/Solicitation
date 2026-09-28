@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Yearbook Payment Solicitation & Donor Wall">
-    <title>Yearbook Solicitation & Donor Wall</title>
+    <meta name="description" content="Yearbook Payment Solicitation & Donor Wall • Class of 2026">
+    <title>Yearbook Solicitation & Donor Wall | Class of 2026</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +13,7 @@
     <!-- Font Awesome Icons for Neumorphic Buttons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Custom Neumorphic Stylesheet -->
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="Style.css?v=5.0">
 </head>
 <body>
 
@@ -23,7 +24,7 @@
         <header class="section-header">
             <div class="neu-pill logo-pill">
                 <i class="fa-solid fa-graduation-cap"></i>
-                <span>Class of 2026 • Official Yearbook Campaign</span>
+                <span>Class of 2026 • Official Yearbook</span>
             </div>
             <!-- Relocated Fundraising Progress -->
             <div class="neu-card header-progress-card" id="header-progress-widget">
@@ -34,15 +35,15 @@
                     </div>
                     <div class="progress-amount-wrap">
                         <span class="header-stats-values">
-                            <strong id="stat-raised">₱0.00</strong>
+                            <strong id="stat-raised">₱720.00</strong>
                             <span class="goal-slash">/</span>
                             <span id="stat-goal">₱2,150.00</span>
                         </span>
-                        <span class="stats-percentage" id="stats-percentage">0%</span>
+                        <span class="stats-percentage" id="stats-percentage">33%</span>
                     </div>
                 </div>
                 <div class="neu-progress-track header-track">
-                    <div class="neu-progress-bar" id="progress-bar" style="width: 0%;"></div>
+                    <div class="neu-progress-bar" id="progress-bar" style="width: 33%;"></div>
                 </div>
             </div>
         </header>
@@ -72,14 +73,15 @@
                         <p class="salutation">Dear Benefactors, Alumni, Parents, and Friends,</p>
                         
                         <p>
-                            As we stand at the threshold of graduation, we look back at the laughter, relentless late-night studies, 
-                            and enduring camaraderie that defined our journey. Our graduation yearbook is not merely a collection of photographs; 
-                            it is a timeless sanctuary of memories, stories, and victories that will live on for generations.
+                            As we stand at the threshold of graduation, we look back at the laughter, the late-night studying, 
+                            and the friendships that shaped our journey. Our yearbook is more than a collection of photographs; 
+                            it is a keepsake of the memories, stories, and victories we will carry for the rest of our lives.
                         </p>
                         
                         <p>
-                            To ensure that <strong>every single student</strong> can hold a copy of their memories without heavy financial burden, 
-                            our committee has initiated this sponsorship campaign to subsidize high-quality printing, binding, and photography.
+                            We want <strong>every single student</strong> to be able to hold a copy of these memories without financial strain. 
+                            That is why our committee is asking for your support: your contribution will help cover the cost of 
+                            high-quality printing, binding, and photography.
                         </p>
 
                         <div class="neu-quote-box">
@@ -110,25 +112,25 @@
                                 </div>
                                 <div class="payment-details">
                                     <span class="channel-name">GCash Transfer</span>
-                                    <span class="account-name" id="gcash-name">Juan Dela Cruz</span>
-                                    <span class="account-number" id="gcash-num">0917 123 4567</span>
+                                    <span class="account-name" id="gcash-name">Annabelle R.</span>
+                                    <span class="account-number" id="gcash-num">0921 228 5248</span>
                                 </div>
-                                <button class="neu-btn neu-btn-icon btn-copy" data-copy="09171234567" title="Copy Number">
+                                <button class="neu-btn neu-btn-icon btn-copy" data-copy="09212285248" title="Copy Number">
                                     <i class="fa-regular fa-copy"></i>
                                 </button>
                             </div>
 
-                            <!-- Bank Transfer Card -->
+                            <!-- GCash Transfer Card 2 -->
                             <div class="neu-card neu-payment-card">
-                                <div class="payment-icon bank">
-                                    <i class="fa-solid fa-building-columns"></i>
+                                <div class="payment-icon gcash">
+                                    <i class="fa-solid fa-mobile-screen-button"></i>
                                 </div>
                                 <div class="payment-details">
-                                    <span class="channel-name">BDO Unibank</span>
-                                    <span class="account-name" id="bank-name">Yearbook Committee</span>
-                                    <span class="account-number" id="bank-num">1234 5678 9012</span>
+                                    <span class="channel-name">GCash Transfer</span>
+                                    <span class="account-name" id="bank-name">Tovi R.</span>
+                                    <span class="account-number" id="bank-num">0919 700 6144</span>
                                 </div>
-                                <button class="neu-btn neu-btn-icon btn-copy" data-copy="123456789012" title="Copy Number">
+                                <button class="neu-btn neu-btn-icon btn-copy" data-copy="09197006144" title="Copy Number">
                                     <i class="fa-regular fa-copy"></i>
                                 </button>
                             </div>
@@ -153,7 +155,7 @@
                         <div class="live-dot-pulse"></div>
                         <h2 class="ticker-title">Honor Roll of Donors</h2>
                     </div>
-                    <span class="ticker-badge" id="donor-count-badge">0 Supporters</span>
+                    <span class="ticker-badge" id="donor-count-badge">2 Supporters</span>
                 </div>
 
                 <p class="ticker-subtitle">
@@ -178,14 +180,10 @@
 
         </div>
 
-        <!-- Footer / Debug / Credits Note -->
+        <!-- Footer / Credits Note -->
         <footer class="section-footer">
-            <span class="footer-note">Crafted with light Neumorphic Design • Class of 2026</span>
-            <div class="footer-debug-tools">
-                <button class="neu-text-btn" id="btn-debug-reset" title="Reset sample test data">
-                    <i class="fa-solid fa-rotate-left"></i> Reset Demo Data
-                </button>
-            </div>
+            <span class="footer-note">Class of 2026 • Official Yearbook Sponsorship</span>
+            <span class="footer-note">Crafted with Soft UI Neumorphic Design</span>
         </footer>
 
     </section>
@@ -194,7 +192,7 @@
     <div class="neu-modal-overlay" id="pledge-modal" aria-hidden="true">
         <div class="neu-modal-box">
             <div class="modal-header">
-                <h3><i class="fa-solid fa-ribbon"></i> Record a Contribution</h3>
+                <h3><i class="fa-solid fa-comment-dots"></i> Add a Comment</h3>
                 <button class="neu-btn neu-btn-icon btn-close-modal" id="btn-close-modal" title="Close">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
@@ -205,28 +203,33 @@
                     <label for="donor-name">Your Full Name or Alias</label>
                     <div class="neu-input-wrapper">
                         <i class="fa-solid fa-user input-icon"></i>
-                        <input type="text" id="donor-name" class="neu-input" placeholder="e.g. Maria Santos (or Anonymous)" required>
+                        <input type="text" id="donor-name" class="neu-input" placeholder="Leave blank for &quot;Anonymous&quot;">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="donor-amount">Donation Amount (₱)</label>
-                    <div class="neu-input-wrapper">
-                        <i class="fa-solid fa-peso-sign input-icon"></i>
-                        <input type="number" id="donor-amount" class="neu-input" placeholder="500" min="1" step="50" required>
+                    <label>Relationship</label>
+                    <div class="neu-select-group" id="relationship-group">
+                        <label class="neu-pill-radio active">
+                            <input type="radio" name="relationship" value="Friends" checked>
+                            <i class="fa-solid fa-user-group"></i>
+                            <span>Friends</span>
+                        </label>
+                        <label class="neu-pill-radio">
+                            <input type="radio" name="relationship" value="Family">
+                            <i class="fa-solid fa-house-chimney-user"></i>
+                            <span>Family</span>
+                        </label>
+                        <label class="neu-pill-radio">
+                            <input type="radio" name="relationship" value="Anonymous">
+                            <i class="fa-solid fa-user-secret"></i>
+                            <span>Anonymous</span>
+                        </label>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="donor-affiliation">Batch / Relationship (Optional)</label>
-                    <div class="neu-input-wrapper">
-                        <i class="fa-solid fa-tag input-icon"></i>
-                        <input type="text" id="donor-affiliation" class="neu-input" placeholder="e.g. Batch 2018 Alumni / Proud Parent">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="donor-message">Message or Dedication</label>
+                    <label for="donor-message">Message or Dedication <span style="color: #ef4444;">*</span></label>
                     <div class="neu-input-wrapper">
                         <textarea id="donor-message" class="neu-input neu-textarea" rows="3" placeholder="Leave an encouraging word for the graduating batch..." required></textarea>
                     </div>
@@ -234,8 +237,8 @@
 
                 <div class="modal-actions">
                     <button type="button" class="neu-btn" id="btn-cancel-modal">Cancel</button>
-                    <button type="submit" class="neu-btn neu-btn-primary">
-                        <i class="fa-solid fa-paper-plane"></i> Post to Donor Wall
+                    <button type="submit" class="neu-btn neu-btn-primary" id="btn-submit-comment">
+                        <i class="fa-solid fa-paper-plane"></i> Send Comment
                     </button>
                 </div>
             </form>
@@ -249,6 +252,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="Script.JS"></script>
+    <script src="Script.JS?v=5.0"></script>
 </body>
 </html>

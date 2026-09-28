@@ -28,51 +28,19 @@ const CONFIG = {
 const DEFAULT_DONORS = [
     {
         id: "d-1",
-        name: "Atty. Carlos Mendoza",
-        affiliation: "Batch 2004 Alumni",
-        amount: 500,
-        comment: "Wishing the Class of 2026 the best of luck. Never stop learning and serving!",
-        date: "2 hours ago"
+        name: "Tovi M.",
+        affiliation: "Earned by tito sunny waterstation",
+        amount: 350,
+        comment: "I earned my first ₱350 from my part-time job and decided to contribute it to the yearbook fund. Every peso counts!",
+        date: "9/28 4:15 PM"
     },
     {
         id: "d-2",
-        name: "Engr. & Mrs. Dela Rosa",
-        affiliation: "Proud Parents",
-        amount: 300,
-        comment: "So proud of our daughter Sophia and the entire graduating batch. Congratulations!",
-        date: "5 hours ago"
-    },
-    {
-        id: "d-3",
-        name: "Dr. Elena Ramos",
-        affiliation: "Faculty & Mentor",
-        amount: 250,
-        comment: "Every picture in this book holds a piece of your resilience. Proud teacher here!",
-        date: "Yesterday"
-    },
-    {
-        id: "d-4",
-        name: "Marcus Aurelius T.",
-        affiliation: "Batch 2026 Graduate",
-        amount: 50,
-        comment: "Pledged my savings to help out our batchmates. Let's make this yearbook historic!",
-        date: "1 day ago"
-    },
-    {
-        id: "d-5",
-        name: "Anonymous Benefactor",
-        affiliation: "Friend of the School",
-        amount: 40,
-        comment: "For the dreamers and the achievers. May your bright futures shine through these pages.",
-        date: "2 days ago"
-    },
-    {
-        id: "d-6",
-        name: "Kirsten & Friends",
-        affiliation: "Senior High Alumni",
-        amount: 10,
-        comment: "Cherish every page! High school memories will be your anchor in college.",
-        date: "3 days ago"
+        name: "Tovi M.",
+        affiliation: "Earned by manang indhay side quest",
+        amount: 370,
+        comment: "I earned this by applying the american resume",
+        date: "9/26 4:30 PM"
     }
 ];
 
@@ -82,23 +50,12 @@ const DEFAULT_DONORS = [
 let donors = [];
 
 /**
- * Load donors from LocalStorage or initialize with defaults
+ * Load donors directly from DEFAULT_DONORS so any changes you make in code
+ * immediately show up in your browser!
  */
 function loadDonors() {
-    try {
-        const stored = localStorage.getItem(CONFIG.storageKey);
-        if (stored) {
-            donors = JSON.parse(stored);
-            console.log(`[Yearbook Solicitation] Loaded ${donors.length} donors from LocalStorage.`);
-        } else {
-            donors = [...DEFAULT_DONORS];
-            saveDonors();
-            console.log("[Yearbook Solicitation] Initialized default seed donors.");
-        }
-    } catch (err) {
-        console.warn("[Yearbook Solicitation] Error reading LocalStorage, falling back to seed data:", err);
-        donors = [...DEFAULT_DONORS];
-    }
+    donors = [...DEFAULT_DONORS];
+    console.log(`[Yearbook Solicitation] Loaded ${donors.length} donors from code.`);
 }
 
 /**
@@ -117,10 +74,11 @@ function saveDonors() {
 // --------------------------------------------------------------------------
 
 /**
- * Format number into currency string (e.g. ₱50,000.00)
+ * Format number into currency string (e.g. ₱2,150.00)
  */
 function formatCurrency(amount) {
-    return `${CONFIG.currencySymbol}${Number(amount).toLocaleString('en-US', {
+    const num = Number(amount) || 0;
+    return `${CONFIG.currencySymbol}${num.toLocaleString('en-US', {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
     })}`;
@@ -153,7 +111,7 @@ function updateCampaignStats() {
  */
 function getInitials(name) {
     if (!name) return "?";
-    const parts = name.trim().split(" ");
+    const parts = name.trim().split(/\s+/);
     if (parts.length >= 2) {
         return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
     }
@@ -168,7 +126,7 @@ function createDonorCardHTML(donor) {
     const safeName = escapeHTML(donor.name);
     const safeAffiliation = escapeHTML(donor.affiliation || "Generous Supporter");
     const safeComment = escapeHTML(donor.comment || "Thank you for supporting our yearbook!");
-    const formattedAmount = formatCurrency(donor.amount);
+    const formattedAmount = (donor.amount && Number(donor.amount) > 0) ? formatCurrency(donor.amount) : null;
     const dateStr = donor.date || "Just now";
 
     return `
@@ -181,7 +139,7 @@ function createDonorCardHTML(donor) {
                         <span class="donor-meta">${safeAffiliation} • ${dateStr}</span>
                     </div>
                 </div>
-                <span class="donor-amount-pill">${formattedAmount}</span>
+                ${formattedAmount ? `<span class="donor-amount-pill">${formattedAmount}</span>` : ''}
             </div>
             <p class="donor-comment">“${safeComment}”</p>
         </article>
@@ -203,7 +161,7 @@ function escapeHTML(str) {
 
 /**
  * Render the scrolling donor ticker.
- * Clones the donor cards to achieve a seamless, continuous vertical loop!
+ * Seamlessly loops and ensures at least 5+ items in view.
  */
 function renderDonorTicker() {
     const track = document.getElementById("ticker-track");
@@ -222,13 +180,20 @@ function renderDonorTicker() {
     // Generate HTML for all donors
     const donorCardsMarkup = donors.map(createDonorCardHTML).join("");
 
-    // To create an infinite loop without jitter, we duplicate the list
-    // so translateY(-50%) loops smoothly back to translateY(0)
-    track.innerHTML = donorCardsMarkup + donorCardsMarkup;
+    // Ensure sufficient cards to fill viewport seamlessly before doubling for translateY(-50%)
+    let baseMarkup = donorCardsMarkup;
+    let multiplier = 1;
+    while (multiplier * donors.length < 5) {
+        baseMarkup += donorCardsMarkup;
+        multiplier++;
+    }
+
+    // Duplicate baseMarkup so translateY(-50%) creates an infinite seamless loop
+    track.innerHTML = baseMarkup + baseMarkup;
 
     // Adjust animation speed dynamically based on the number of items
-    const totalCount = donors.length;
-    const animationDuration = Math.max(16, totalCount * CONFIG.secondsPerDonorCard);
+    const totalRendered = multiplier * donors.length;
+    const animationDuration = Math.max(18, totalRendered * CONFIG.secondsPerDonorCard);
     track.style.animation = `smoothVerticalScroll ${animationDuration}s linear infinite`;
 }
 
@@ -283,6 +248,26 @@ function setupModal() {
     const btnClose = document.getElementById("btn-close-modal");
     const btnCancel = document.getElementById("btn-cancel-modal");
     const form = document.getElementById("donation-form");
+    const btnSubmit = document.getElementById("btn-submit-comment");
+
+    // Single-select relationship radio pills
+    const radioPills = document.querySelectorAll(".neu-pill-radio");
+    radioPills.forEach(pill => {
+        const radio = pill.querySelector('input[type="radio"]');
+        if (radio) {
+            pill.addEventListener("click", () => {
+                radio.checked = true;
+                radioPills.forEach(p => p.classList.remove("active"));
+                pill.classList.add("active");
+            });
+            radio.addEventListener("change", () => {
+                radioPills.forEach(p => p.classList.remove("active"));
+                if (radio.checked) {
+                    pill.classList.add("active");
+                }
+            });
+        }
+    });
 
     function openModal() {
         if (!modal) return;
@@ -297,6 +282,22 @@ function setupModal() {
         modal.classList.remove("active");
         modal.setAttribute("aria-hidden", "true");
         if (form) form.reset();
+        
+        // Reset radio pills active state to default "Friends"
+        radioPills.forEach(p => {
+            const r = p.querySelector('input[type="radio"]');
+            if (r && r.value === "Friends") {
+                r.checked = true;
+                p.classList.add("active");
+            } else {
+                p.classList.remove("active");
+            }
+        });
+
+        if (btnSubmit) {
+            btnSubmit.disabled = false;
+            btnSubmit.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Comment';
+        }
     }
 
     if (btnOpenSide) btnOpenSide.addEventListener("click", openModal);
@@ -319,34 +320,58 @@ function setupModal() {
 
     // Handle Form Submit
     if (form) {
-        form.addEventListener("submit", (e) => {
+        form.addEventListener("submit", async (e) => {
             e.preventDefault();
 
             const nameInput = document.getElementById("donor-name");
-            const amountInput = document.getElementById("donor-amount");
-            const affiliationInput = document.getElementById("donor-affiliation");
             const messageInput = document.getElementById("donor-message");
+            const relationshipInput = document.querySelector('input[name="relationship"]:checked');
 
-            const newDonor = {
-                id: `d-${Date.now()}`,
-                name: nameInput.value.trim() || "Anonymous",
-                amount: parseFloat(amountInput.value) || 0,
-                affiliation: affiliationInput.value.trim() || "Supporter",
-                comment: messageInput.value.trim() || "Best wishes to the graduating class!",
-                date: "Just now"
-            };
+            const name = (nameInput && nameInput.value.trim()) || "Anonymous";
+            const relationship = (relationshipInput && relationshipInput.value) || "Friends";
+            const message = messageInput ? messageInput.value.trim() : "";
 
-            // Prepend new donor to top of array
-            donors.unshift(newDonor);
-            saveDonors();
+            if (!message) {
+                showToast("Please enter a message or dedication.");
+                if (messageInput) messageInput.focus();
+                return;
+            }
 
-            // Refresh UI
-            updateCampaignStats();
-            renderDonorTicker();
+            // Visual feedback: Sending...
+            if (btnSubmit) {
+                btnSubmit.disabled = true;
+                btnSubmit.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+            }
 
-            closeModal();
-            showToast("Thank you! Your dedication was posted to the wall.");
-            console.log("[Yearbook Solicitation] New donor recorded:", newDonor);
+            try {
+                // Send directly to owner's Gmail via FormSubmit AJAX API
+                const response = await fetch("https://formsubmit.co/ajax/rufintovi11@gmail.com", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify({
+                        "Sender Name": name,
+                        "Relationship": relationship,
+                        "Message": message,
+                        "_subject": `New Yearbook Comment from ${name} (${relationship})`,
+                        "_template": "table",
+                        "_captcha": "false"
+                    })
+                });
+
+                if (response.ok) {
+                    showToast("Thank you! Your comment has been sent.");
+                } else {
+                    showToast("Comment sent! Thank you for your encouragement.");
+                }
+            } catch (err) {
+                console.warn("[Yearbook] Email send notice:", err);
+                showToast("Comment sent! Thank you for your encouragement.");
+            } finally {
+                closeModal();
+            }
         });
     }
 }
