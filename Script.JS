@@ -19,7 +19,7 @@
 const CONFIG = {
     campaignGoal: 2150, // Target goal amount in Pesos (₱)
     currencySymbol: "₱",
-    storageKey: "yearbook_solicitation_donors_v1",
+    storageKey: "yearbook_solicitation_donors_v2",
     // Base scroll speed: lower number = faster scroll, higher = slower
     secondsPerDonorCard: 3.5, 
 };
