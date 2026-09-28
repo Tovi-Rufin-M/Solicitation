@@ -280,7 +280,6 @@ function showToast(message) {
 function setupModal() {
     const modal = document.getElementById("pledge-modal");
     const btnToggle = document.getElementById("btn-toggle-modal");
-    const btnDonateNow = document.getElementById("btn-donate-now");
     const btnOpenSide = document.getElementById("btn-open-form-side");
     const btnClose = document.getElementById("btn-close-modal");
     const btnCancel = document.getElementById("btn-cancel-modal");
@@ -302,7 +301,6 @@ function setupModal() {
     }
 
     if (btnToggle) btnToggle.addEventListener("click", openModal);
-    if (btnDonateNow) btnDonateNow.addEventListener("click", openModal);
     if (btnOpenSide) btnOpenSide.addEventListener("click", openModal);
     if (btnClose) btnClose.addEventListener("click", closeModal);
     if (btnCancel) btnCancel.addEventListener("click", closeModal);
