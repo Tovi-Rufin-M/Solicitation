@@ -1,0 +1,886 @@
+/* ==========================================================================
+   NEUMORPHISM YEARBOOK SOLICITATION & DONOR WALL
+   Palette: Light, Soft UI (Embossed & Debossed elements)
+   ========================================================================== */
+
+:root {
+    /* Base Palette */
+    --bg-base: #e9eef5;
+    --card-bg: #e9eef5;
+    
+    /* Neumorphic Shadows (Elevated / Convex) */
+    --neu-shadow-light: #ffffff;
+    --neu-shadow-dark: #cad3df;
+    --neu-shadow-darker: #b8c4d4;
+    
+    --neu-elevation: 8px 8px 18px var(--neu-shadow-dark), -8px -8px 18px var(--neu-shadow-light);
+    --neu-elevation-sm: 4px 4px 10px var(--neu-shadow-dark), -4px -4px 10px var(--neu-shadow-light);
+    --neu-elevation-lg: 12px 12px 28px var(--neu-shadow-dark), -12px -12px 28px var(--neu-shadow-light);
+    
+    /* Neumorphic Shadows (Inset / Sunken) */
+    --neu-inset: inset 4px 4px 8px var(--neu-shadow-dark), inset -4px -4px 8px var(--neu-shadow-light);
+    --neu-inset-sm: inset 2px 2px 5px var(--neu-shadow-dark), inset -2px -2px 5px var(--neu-shadow-light);
+    --neu-inset-deep: inset 6px 6px 14px var(--neu-shadow-dark), inset -6px -6px 14px var(--neu-shadow-light);
+
+    /* Text Colors */
+    --text-primary: #233044;
+    --text-secondary: #586981;
+    --text-muted: #8496ad;
+
+    /* Accents */
+    --accent-primary: #3b66f5;
+    --accent-primary-hover: #2952e3;
+    --accent-emerald: #0ea573;
+    --accent-amber: #e67e22;
+
+    /* Layout & Radii */
+    --radius-sm: 10px;
+    --radius-md: 18px;
+    --radius-lg: 24px;
+    --radius-pill: 9999px;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-serif: 'Playfair Display', Georgia, serif;
+}
+
+/* Base Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   SINGLE SECTION LAYOUT
+   ========================================================================== */
+.solicitation-section {
+    height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem 2rem 1rem 2rem;
+    overflow: hidden;
+}
+
+/* Header */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    margin-bottom: 1rem;
+}
+
+.logo-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    padding: 0.55rem 1.2rem;
+}
+
+.logo-pill i {
+    font-size: 1.05rem;
+}
+
+/* Main Grid: Letter (approx 62%) + Ticker (approx 38%) */
+.content-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1.55fr 1fr;
+    gap: 1.75rem;
+    min-height: 0; /* Critical for inner scrolling */
+}
+
+/* ==========================================================================
+   NEUMORPHIC PRIMITIVES
+   ========================================================================== */
+.neu-card {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--neu-elevation);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.neu-pill {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--neu-elevation-sm);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.neu-btn {
+    background-color: var(--card-bg);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--neu-elevation-sm);
+    padding: 0.6rem 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.neu-btn:hover {
+    box-shadow: 6px 6px 14px var(--neu-shadow-dark), -6px -6px 14px var(--neu-shadow-light);
+    color: var(--accent-primary);
+    transform: translateY(-1px);
+}
+
+.neu-btn:active {
+    box-shadow: var(--neu-inset-sm);
+    transform: translateY(1px);
+}
+
+.neu-btn-primary {
+    background: linear-gradient(135deg, #3b66f5, #2f54d6);
+    color: #ffffff !important;
+    box-shadow: 5px 5px 14px rgba(59, 102, 245, 0.35), -5px -5px 14px #ffffff;
+}
+
+.neu-btn-primary:hover {
+    background: linear-gradient(135deg, #4770ff, #294cc7);
+    box-shadow: 6px 6px 18px rgba(59, 102, 245, 0.45), -6px -6px 18px #ffffff;
+    color: #ffffff !important;
+}
+
+.neu-btn-primary:active {
+    box-shadow: inset 3px 3px 6px rgba(18, 41, 114, 0.6), inset -3px -3px 6px rgba(255, 255, 255, 0.3);
+}
+
+.neu-btn-sm {
+    padding: 0.45rem 0.95rem;
+    font-size: 0.82rem;
+}
+
+.neu-btn-icon {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border-radius: 50%;
+}
+
+.neu-divider {
+    height: 2px;
+    width: 100%;
+    margin: 1.1rem 0;
+    background: linear-gradient(to right, transparent, var(--neu-shadow-dark), transparent);
+}
+
+.neu-inset-panel {
+    background-color: var(--card-bg);
+    box-shadow: var(--neu-inset);
+    border-radius: var(--radius-md);
+    padding: 1.1rem;
+}
+
+/* ==========================================================================
+   LEFT: SOLICITATION LETTER
+   ========================================================================== */
+.letter-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 1.5rem 1.8rem;
+    position: relative;
+}
+
+.letter-scroll-area {
+    overflow-y: auto;
+    padding-right: 0.75rem;
+    height: 100%;
+}
+
+/* Custom Scrollbar for Letter */
+.letter-scroll-area::-webkit-scrollbar {
+    width: 6px;
+}
+.letter-scroll-area::-webkit-scrollbar-track {
+    background: transparent;
+}
+.letter-scroll-area::-webkit-scrollbar-thumb {
+    background: #c3cfde;
+    border-radius: 4px;
+}
+.letter-scroll-area::-webkit-scrollbar-thumb:hover {
+    background: #abbacb;
+}
+
+/* Letter Header */
+.letter-header {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+}
+
+.neu-icon-circle {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    border-radius: 50%;
+    background-color: var(--card-bg);
+    box-shadow: var(--neu-elevation-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-primary);
+    font-size: 1.4rem;
+}
+
+.letter-kicker {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+}
+
+.letter-title {
+    font-family: var(--font-serif);
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin: 0.15rem 0;
+}
+
+.letter-meta {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Letter Body Typography */
+.letter-body {
+    font-size: 0.93rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+}
+
+.letter-body p {
+    margin-bottom: 0.85rem;
+}
+
+.letter-body .salutation {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.neu-quote-box {
+    margin: 1rem 0;
+    padding: 0.9rem 1.2rem;
+    background-color: var(--card-bg);
+    box-shadow: var(--neu-inset);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--accent-primary);
+    display: flex;
+    gap: 0.85rem;
+    align-items: center;
+}
+
+.quote-icon {
+    font-size: 1.2rem;
+    color: var(--accent-primary);
+    opacity: 0.6;
+}
+
+.neu-quote-box p {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--text-primary);
+}
+
+/* Campaign Goal Progress */
+.campaign-stats {
+    margin: 1.2rem 0;
+}
+
+.stats-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
+
+.stats-label {
+    color: var(--text-secondary);
+}
+
+.stats-percentage {
+    color: var(--accent-primary);
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.neu-progress-track {
+    width: 100%;
+    height: 12px;
+    background-color: var(--card-bg);
+    box-shadow: var(--neu-inset-sm);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+    position: relative;
+}
+
+.neu-progress-bar {
+    height: 100%;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(90deg, #3b66f5, #0ea573);
+    box-shadow: 2px 0 8px rgba(14, 165, 115, 0.4);
+    transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.stats-numbers {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.6rem;
+    font-size: 0.82rem;
+}
+
+.stats-numbers small {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.stats-numbers strong {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.text-right {
+    text-align: right;
+}
+
+/* Payment Methods */
+.payment-section {
+    margin: 1.2rem 0;
+}
+
+.payment-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.payment-title i {
+    color: var(--accent-emerald);
+}
+
+.payment-methods-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem;
+}
+
+.neu-payment-card {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    gap: 0.85rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--neu-elevation-sm);
+}
+
+.payment-icon {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    border-radius: 50%;
+    box-shadow: var(--neu-elevation-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+}
+
+.payment-icon.gcash {
+    color: #007dfe;
+}
+
+.payment-icon.bank {
+    color: #e67e22;
+}
+
+.payment-details {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.channel-name {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.account-name {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.account-number {
+    font-family: monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    letter-spacing: 0.02em;
+}
+
+.letter-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.25rem;
+    padding-top: 0.85rem;
+    border-top: 1px dashed var(--neu-shadow-dark);
+}
+
+.signoff-text {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.signoff-text strong {
+    color: var(--text-primary);
+}
+
+/* ==========================================================================
+   RIGHT: SCROLLING DONOR WALL & COMMENTS TICKER
+   ========================================================================== */
+.ticker-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 1.4rem;
+}
+
+.ticker-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.25rem;
+}
+
+.ticker-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.live-dot-pulse {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: var(--accent-emerald);
+    box-shadow: 0 0 0 0 rgba(14, 165, 115, 0.7);
+    animation: livePulse 1.8s infinite;
+}
+
+@keyframes livePulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(14, 165, 115, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 9px rgba(14, 165, 115, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(14, 165, 115, 0);
+    }
+}
+
+.ticker-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.ticker-badge {
+    background-color: var(--card-bg);
+    box-shadow: var(--neu-inset-sm);
+    padding: 0.25rem 0.7rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+}
+
+.ticker-subtitle {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 0.9rem;
+}
+
+/* Ticker Viewport & Continuous Animated Track */
+.ticker-viewport {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    border-radius: var(--radius-md);
+    background-color: var(--card-bg);
+    box-shadow: var(--neu-inset-deep);
+    padding: 0.8rem;
+    min-height: 0;
+    /* Soft gradient fade mask at top and bottom */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+.ticker-track {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    animation: smoothVerticalScroll 26s linear infinite;
+    will-change: transform;
+}
+
+/* Pause scroll when the user hovers over ticker */
+.ticker-viewport:hover .ticker-track {
+    animation-play-state: paused;
+}
+
+@keyframes smoothVerticalScroll {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+/* Individual Donor Card */
+.donor-card {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--neu-elevation-sm);
+    padding: 0.9rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.donor-card:hover {
+    transform: scale(1.015);
+    box-shadow: 6px 6px 14px var(--neu-shadow-dark), -6px -6px 14px var(--neu-shadow-light);
+}
+
+.donor-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.45rem;
+}
+
+.donor-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.donor-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--card-bg);
+    box-shadow: var(--neu-elevation-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+}
+
+.donor-name-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.donor-name {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.donor-meta {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+}
+
+.donor-amount-pill {
+    background-color: var(--card-bg);
+    box-shadow: var(--neu-inset-sm);
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--accent-emerald);
+}
+
+.donor-comment {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.45;
+    background-color: rgba(255, 255, 255, 0.25);
+    padding: 0.45rem 0.65rem;
+    border-radius: var(--radius-sm);
+    font-style: italic;
+    word-break: break-word;
+}
+
+.ticker-footer {
+    margin-top: 0.85rem;
+    flex-shrink: 0;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* ==========================================================================
+   FOOTER (COMPACT & DEBUG NOTES)
+   ========================================================================== */
+.section-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    padding-top: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.neu-text-btn {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+
+.neu-text-btn:hover {
+    color: var(--accent-primary);
+}
+
+/* ==========================================================================
+   NEUMORPHIC MODAL (PLEDGE / DONOR SUBMISSION)
+   ========================================================================== */
+.neu-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(23, 33, 49, 0.4);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
+.neu-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.neu-modal-box {
+    background-color: var(--card-bg);
+    box-shadow: var(--neu-elevation-lg);
+    border-radius: var(--radius-lg);
+    width: 90%;
+    max-width: 480px;
+    padding: 1.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transform: scale(0.92);
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.neu-modal-overlay.active .neu-modal-box {
+    transform: scale(1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+
+.modal-header h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.modal-header h3 i {
+    color: var(--accent-primary);
+}
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.form-group label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.neu-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.neu-input {
+    width: 100%;
+    background-color: var(--card-bg);
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 0.88rem;
+    color: var(--text-primary);
+    padding: 0.65rem 1rem 0.65rem 2.4rem;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--neu-inset-sm);
+    transition: box-shadow 0.2s;
+}
+
+.neu-input:focus {
+    box-shadow: var(--neu-inset);
+    color: var(--text-primary);
+}
+
+.neu-textarea {
+    resize: none;
+    padding-left: 1rem;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+/* ==========================================================================
+   TOAST NOTIFICATION
+   ========================================================================== */
+.neu-toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background-color: var(--card-bg);
+    box-shadow: var(--neu-elevation);
+    border-radius: var(--radius-pill);
+    padding: 0.75rem 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.neu-toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.neu-toast i {
+    color: var(--accent-emerald);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (Single Section adapts gracefully if screen is small)
+   ========================================================================== */
+@media (max-width: 960px) {
+    .solicitation-section {
+        height: auto;
+        max-height: none;
+        overflow: visible;
+        padding: 1.25rem 1rem;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .letter-card {
+        height: 600px;
+    }
+
+    .ticker-card {
+        height: 480px;
+    }
+
+    .ticker-viewport {
+        height: 380px;
+    }
+
+    .payment-methods-grid {
+        grid-template-columns: 1fr;
+    }
+}
