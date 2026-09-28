@@ -25,11 +25,20 @@
                 <i class="fa-solid fa-graduation-cap"></i>
                 <span>Class of 2026 • Official Yearbook Campaign</span>
             </div>
-            <div class="header-actions">
-                <button class="neu-btn neu-btn-sm" id="btn-toggle-modal" title="Pledge a donation or leave a note">
-                    <i class="fa-solid fa-heart"></i>
-                    <span>Leave a Message</span>
-                </button>
+            <!-- Relocated Fundraising Progress -->
+            <div class="neu-pill header-progress-pill" id="header-progress-widget">
+                <div class="header-progress-header">
+                    <span class="stats-label"><i class="fa-solid fa-chart-line"></i> Fundraising Progress:</span>
+                    <span class="header-stats-values">
+                        <strong id="stat-raised">₱0.00</strong>
+                        <span class="goal-slash">/</span>
+                        <span id="stat-goal">₱2,150.00</span>
+                    </span>
+                    <span class="stats-percentage" id="stats-percentage">0%</span>
+                </div>
+                <div class="neu-progress-track header-track">
+                    <div class="neu-progress-bar" id="progress-bar" style="width: 0%;"></div>
+                </div>
             </div>
         </header>
 
@@ -79,27 +88,6 @@
                             Any contribution, large or small, directly lowers the cost per copy for graduating students in need. 
                             We humbly appeal to your kind heart to be our patron.
                         </p>
-                    </div>
-
-                    <!-- Campaign Goal Progress -->
-                    <div class="neu-inset-panel campaign-stats">
-                        <div class="stats-row">
-                            <span class="stats-label">Fundraising Progress</span>
-                            <span class="stats-percentage" id="stats-percentage">0%</span>
-                        </div>
-                        <div class="neu-progress-track">
-                            <div class="neu-progress-bar" id="progress-bar" style="width: 0%;"></div>
-                        </div>
-                        <div class="stats-numbers">
-                            <div>
-                                <small>Raised so far</small>
-                                <strong id="stat-raised">₱0.00</strong>
-                            </div>
-                            <div class="text-right">
-                                <small>Target Goal</small>
-                                <strong id="stat-goal">₱50,000.00</strong>
-                            </div>
-                        </div>
                     </div>
 
                     <!-- Payment Information / Remittance Details -->

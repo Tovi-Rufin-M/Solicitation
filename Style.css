@@ -62,6 +62,8 @@ html, body {
    SINGLE SECTION LAYOUT
    ========================================================================== */
 .solicitation-section {
+    min-height: 100vh;
+    min-height: 100dvh;
     height: 100vh;
     max-height: 100vh;
     display: flex;
@@ -77,6 +79,8 @@ html, body {
     align-items: center;
     flex-shrink: 0;
     margin-bottom: 1rem;
+    gap: 0.75rem;
+    flex-wrap: wrap;
 }
 
 .logo-pill {
@@ -91,6 +95,59 @@ html, body {
 
 .logo-pill i {
     font-size: 1.05rem;
+}
+
+/* Header Relocated Fundraising Progress */
+.header-progress-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.1rem;
+    padding: 0.42rem 1.2rem;
+    font-size: 0.82rem;
+}
+
+.header-progress-header {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.header-progress-header .stats-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.header-progress-header .stats-label i {
+    color: var(--accent-emerald);
+}
+
+.header-stats-values {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.3rem;
+    font-size: 0.85rem;
+}
+
+.header-stats-values strong {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.header-stats-values .goal-slash {
+    color: var(--text-muted);
+}
+
+.header-stats-values #stat-goal {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.header-track {
+    width: 140px;
+    height: 10px;
 }
 
 /* Main Grid: Letter (approx 62%) + Ticker (approx 38%) */
@@ -853,34 +910,262 @@ html, body {
 }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN (Single Section adapts gracefully if screen is small)
+   RESPONSIVE DESIGN (Adaptive Single-Section for Desktop, Fluid for Mobile)
    ========================================================================== */
-@media (max-width: 960px) {
+
+/* Laptops & Small Desktops (1024px - 1180px) */
+@media (max-width: 1180px) {
+    .solicitation-section {
+        padding: 1rem 1.25rem 0.85rem 1.25rem;
+    }
+
+    .content-grid {
+        gap: 1.2rem;
+        grid-template-columns: 1.4fr 1fr;
+    }
+
+    .header-progress-pill {
+        padding: 0.35rem 0.95rem;
+        gap: 0.85rem;
+    }
+
+    .header-track {
+        width: 110px;
+    }
+}
+
+/* Tablets & Small Height Screens (Stacked fluid scroll) */
+@media (max-width: 900px), (max-height: 680px) {
+    body {
+        overflow-y: auto;
+    }
+
     .solicitation-section {
         height: auto;
+        min-height: 100vh;
+        min-height: 100dvh;
         max-height: none;
         overflow: visible;
-        padding: 1.25rem 1rem;
+        padding: 1rem 1.25rem 1.5rem 1.25rem;
     }
 
     .content-grid {
         grid-template-columns: 1fr;
         height: auto;
+        gap: 1.5rem;
     }
 
     .letter-card {
-        height: 600px;
+        height: auto;
+        max-height: none;
+        overflow: visible;
+    }
+
+    .letter-scroll-area {
+        overflow: visible;
+        height: auto;
+        padding-right: 0;
     }
 
     .ticker-card {
-        height: 480px;
+        height: auto;
+        max-height: none;
     }
 
     .ticker-viewport {
-        height: 380px;
+        height: 350px;
+        min-height: 350px;
+    }
+}
+
+/* Tablets Portrait & Medium Phones (<= 680px) */
+@media (max-width: 680px) {
+    .section-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.65rem;
+        margin-bottom: 0.85rem;
+    }
+
+    .logo-pill {
+        width: 100%;
+        justify-content: center;
+        font-size: 0.82rem;
+        padding: 0.5rem 0.85rem;
+        text-align: center;
+    }
+
+    .header-progress-pill {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.45rem;
+        padding: 0.65rem 0.95rem;
+        border-radius: var(--radius-md);
+    }
+
+    .header-progress-header {
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        font-size: 0.78rem;
+    }
+
+    .header-track {
+        width: 100% !important;
+        height: 8px;
     }
 
     .payment-methods-grid {
         grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .letter-card {
+        padding: 1.25rem 1.1rem;
+    }
+
+    .letter-title {
+        font-size: 1.45rem;
+    }
+
+    .letter-header {
+        gap: 0.85rem;
+    }
+
+    .neu-icon-circle {
+        width: 46px;
+        height: 46px;
+        min-width: 46px;
+        font-size: 1.15rem;
+    }
+
+    .neu-quote-box {
+        padding: 0.7rem 0.95rem;
+        margin: 0.85rem 0;
+        font-size: 0.84rem;
+    }
+
+    .ticker-card {
+        padding: 1.25rem 1.1rem;
+    }
+
+    .ticker-viewport {
+        height: 320px;
+        min-height: 320px;
+    }
+
+    .section-footer {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+        font-size: 0.72rem;
+        padding-top: 1rem;
+    }
+}
+
+/* Small Phones (<= 440px) */
+@media (max-width: 440px) {
+    .solicitation-section {
+        padding: 0.65rem 0.65rem 1.25rem 0.65rem;
+    }
+
+    .logo-pill {
+        font-size: 0.76rem;
+        padding: 0.45rem 0.65rem;
+    }
+
+    .header-progress-header .stats-label {
+        font-size: 0.74rem;
+    }
+
+    .header-stats-values {
+        font-size: 0.76rem;
+    }
+
+    .letter-card {
+        padding: 1.1rem 0.9rem;
+        border-radius: var(--radius-md);
+    }
+
+    .ticker-card {
+        padding: 1.1rem 0.9rem;
+        border-radius: var(--radius-md);
+    }
+
+    .letter-title {
+        font-size: 1.25rem;
+    }
+
+    .letter-body {
+        font-size: 0.86rem;
+        line-height: 1.55;
+    }
+
+    .neu-payment-card {
+        padding: 0.65rem 0.75rem;
+        gap: 0.65rem;
+    }
+
+    .payment-icon {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        font-size: 0.9rem;
+    }
+
+    .account-number {
+        font-size: 0.8rem;
+    }
+
+    .btn-copy {
+        width: 34px;
+        height: 34px;
+        min-width: 34px;
+    }
+
+    .donor-card {
+        padding: 0.65rem 0.75rem;
+    }
+
+    .donor-avatar {
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+        font-size: 0.7rem;
+    }
+
+    .donor-name {
+        font-size: 0.78rem;
+    }
+
+    .donor-meta {
+        font-size: 0.65rem;
+    }
+
+    .donor-comment {
+        font-size: 0.74rem;
+        padding: 0.35rem 0.5rem;
+    }
+
+    .neu-modal-box {
+        padding: 1.25rem 1rem;
+        width: 95%;
+        border-radius: var(--radius-md);
+    }
+
+    .modal-header h3 {
+        font-size: 1.05rem;
+    }
+
+    .neu-input {
+        font-size: 0.82rem;
+        padding: 0.55rem 0.75rem 0.55rem 2.2rem;
+    }
+
+    .neu-textarea {
+        padding-left: 0.75rem;
     }
 }

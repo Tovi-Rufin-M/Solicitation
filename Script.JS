@@ -17,7 +17,7 @@
 // 1. CONFIGURATION & SEED DATA (Customize these for your campaign!)
 // --------------------------------------------------------------------------
 const CONFIG = {
-    campaignGoal: 50000, // Target goal amount in Pesos (₱)
+    campaignGoal: 2150, // Target goal amount in Pesos (₱)
     currencySymbol: "₱",
     storageKey: "yearbook_solicitation_donors_v1",
     // Base scroll speed: lower number = faster scroll, higher = slower
@@ -30,7 +30,7 @@ const DEFAULT_DONORS = [
         id: "d-1",
         name: "Atty. Carlos Mendoza",
         affiliation: "Batch 2004 Alumni",
-        amount: 5000,
+        amount: 500,
         comment: "Wishing the Class of 2026 the best of luck. Never stop learning and serving!",
         date: "2 hours ago"
     },
@@ -38,7 +38,7 @@ const DEFAULT_DONORS = [
         id: "d-2",
         name: "Engr. & Mrs. Dela Rosa",
         affiliation: "Proud Parents",
-        amount: 3000,
+        amount: 300,
         comment: "So proud of our daughter Sophia and the entire graduating batch. Congratulations!",
         date: "5 hours ago"
     },
@@ -46,7 +46,7 @@ const DEFAULT_DONORS = [
         id: "d-3",
         name: "Dr. Elena Ramos",
         affiliation: "Faculty & Mentor",
-        amount: 2500,
+        amount: 250,
         comment: "Every picture in this book holds a piece of your resilience. Proud teacher here!",
         date: "Yesterday"
     },
@@ -54,7 +54,7 @@ const DEFAULT_DONORS = [
         id: "d-4",
         name: "Marcus Aurelius T.",
         affiliation: "Batch 2026 Graduate",
-        amount: 500,
+        amount: 50,
         comment: "Pledged my savings to help out our batchmates. Let's make this yearbook historic!",
         date: "1 day ago"
     },
@@ -62,7 +62,7 @@ const DEFAULT_DONORS = [
         id: "d-5",
         name: "Anonymous Benefactor",
         affiliation: "Friend of the School",
-        amount: 4000,
+        amount: 40,
         comment: "For the dreamers and the achievers. May your bright futures shine through these pages.",
         date: "2 days ago"
     },
@@ -70,7 +70,7 @@ const DEFAULT_DONORS = [
         id: "d-6",
         name: "Kirsten & Friends",
         affiliation: "Senior High Alumni",
-        amount: 1500,
+        amount: 10,
         comment: "Cherish every page! High school memories will be your anchor in college.",
         date: "3 days ago"
     }
@@ -279,7 +279,6 @@ function showToast(message) {
 // --------------------------------------------------------------------------
 function setupModal() {
     const modal = document.getElementById("pledge-modal");
-    const btnToggle = document.getElementById("btn-toggle-modal");
     const btnOpenSide = document.getElementById("btn-open-form-side");
     const btnClose = document.getElementById("btn-close-modal");
     const btnCancel = document.getElementById("btn-cancel-modal");
@@ -300,7 +299,6 @@ function setupModal() {
         if (form) form.reset();
     }
 
-    if (btnToggle) btnToggle.addEventListener("click", openModal);
     if (btnOpenSide) btnOpenSide.addEventListener("click", openModal);
     if (btnClose) btnClose.addEventListener("click", closeModal);
     if (btnCancel) btnCancel.addEventListener("click", closeModal);
