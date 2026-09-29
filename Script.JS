@@ -38,7 +38,7 @@ const DEFAULT_DONORS = [
         id: "d-2",
         name: "Tovi M.",
         affiliation: "Earned by manang indhay side quest",
-        amount: 370,
+        amount: 336,
         comment: "I earned this by applying the american resume",
         date: "9/26 4:30 PM"
     },
@@ -49,11 +49,35 @@ const DEFAULT_DONORS = [
         amount: 200,
         comment: "secreto talang ni ha hahaha",
         date: "9/28 10:35 PM"
+    },
+    {
+        id: "d-4",
+        name: "Anonymous Supporter",
+        affiliation: "Gcash GA****L O.",
+        amount: 50,
+        comment: "",
+        date: "9/28 10:42 PM"
+    },
+    {
+        id: "d-5",
+        name: "Abby R.",
+        affiliation: "Gcash Funds",
+        amount: 2000,
+        comment: "",
+        date: "9/28 10:42 PM"
+    },
+    {
+        id: "d-6",
+        name: "KEISHA M.",
+        affiliation: "Gcash Funds",
+        amount: 250,
+        comment: "Why?",
+        date: "9/28 10:42 PM"
     }
 ];
 
 // --------------------------------------------------------------------------
-// 2. STATE MANAGEMENT secreto talang ni ha hahaha
+// 2. STATE MANAGEMENT 0947-9628-002
 // --------------------------------------------------------------------------
 let donors = [];
 
