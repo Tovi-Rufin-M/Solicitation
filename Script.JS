@@ -70,7 +70,7 @@ const DEFAULT_DONORS = [
         id: "d-6",
         name: "KEISHA M.",
         affiliation: "Gcash Funds",
-        amount: 250,
+        amount: 150,
         comment: "Why?",
         date: "9/28 10:42 PM"
     }
