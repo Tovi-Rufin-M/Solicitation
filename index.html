@@ -13,7 +13,7 @@
     <!-- Font Awesome Icons for Neumorphic Buttons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Custom Neumorphic Stylesheet -->
-    <link rel="stylesheet" href="Style.css?v=5.1">
+    <link rel="stylesheet" href="Style.css?v=5.2">
 </head>
 <body>
 
@@ -26,25 +26,9 @@
                 <i class="fa-solid fa-graduation-cap"></i>
                 <span>Class of 2026 • Official Yearbook</span>
             </div>
-            <!-- Relocated Fundraising Progress -->
-            <div class="neu-card header-progress-card" id="header-progress-widget">
-                <div class="progress-top-row">
-                    <div class="progress-label-wrap">
-                        <i class="fa-solid fa-chart-line"></i>
-                        <span class="stats-label">Fundraising Progress</span>
-                    </div>
-                    <div class="progress-amount-wrap">
-                        <span class="header-stats-values">
-                            <strong id="stat-raised">₱720.00</strong>
-                            <span class="goal-slash">/</span>
-                            <span id="stat-goal">₱2,150.00</span>
-                        </span>
-                        <span class="stats-percentage" id="stats-percentage">33%</span>
-                    </div>
-                </div>
-                <div class="neu-progress-track header-track">
-                    <div class="neu-progress-bar" id="progress-bar" style="width: 33%;"></div>
-                </div>
+            <div class="neu-pill campaign-badge-pill">
+                <span class="live-dot-pulse"></span>
+                <span>Yearbook Sponsorship Appeal</span>
             </div>
         </header>
 
@@ -131,8 +115,40 @@
                             <strong>Tovi • Graduating Class of 2026</strong>
                         </div>
                     </div>
+
+                    <!-- Highlighted Fundraising Progress -->
+                    <div class="neu-card campaign-progress-card" id="campaign-progress-widget">
+                        <div class="campaign-progress-header">
+                            <div class="progress-title-wrap">
+                                <div class="neu-icon-badge">
+                                    <i class="fa-solid fa-chart-line"></i>
+                                </div>
+                                <div class="progress-heading-wrap">
+                                    <span class="progress-kicker">Campaign Goal</span>
+                                    <h4 class="progress-heading">Fundraising Progress</h4>
+                                </div>
+                            </div>
+                            <span class="stats-percentage" id="stats-percentage">33%</span>
+                        </div>
+
+                        <div class="neu-progress-track">
+                            <div class="neu-progress-bar" id="progress-bar" style="width: 33%;"></div>
+                        </div>
+
+                        <div class="stats-numbers">
+                            <div class="stat-col">
+                                <small>Raised So Far</small>
+                                <strong id="stat-raised">₱720.00</strong>
+                            </div>
+                            <div class="stat-col text-right">
+                                <small>Target Goal</small>
+                                <strong id="stat-goal">₱2,150.00</strong>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            
 
             <!-- RIGHT: Side Scrolling Donor Ticker Feed -->
             <div class="neu-card ticker-card" id="ticker-card">
@@ -238,6 +254,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="Script.JS?v=5.1"></script>
+    <script src="Script.JS?v=5.2"></script>
 </body>
 </html>
